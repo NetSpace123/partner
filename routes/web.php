@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//HomePage Routes
+Route::get('/',[\App\Http\Controllers\HomepageController::class,'index'])->name('home');
+
+
+//User Controller
+Route::get('/login',[\App\Http\Controllers\UserController::class,'login'])->name('user-login');
+Route::get('/register',[\App\Http\Controllers\UserController::class,'register'])->name('user-register');
+Route::post('/createuser',[\App\Http\Controllers\UserController::class,'createuser'])->name('create-new-user');
+Route::post('/checkpartner',[\App\Http\Controllers\UserController::class,'checkpartner'])->name('checkpartner');
