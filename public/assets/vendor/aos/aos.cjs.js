@@ -524,7 +524,7 @@ var isDisabled = function isDisabled(optionDisable) {
 
 /**
  * Initializing AOS
- * - Create options merging defaults with user defined options
+ * - Create options merging defaults with partner defined options
  * - Set attributes on <body> as global setting - css relies on it
  * - Attach preparing elements to options.startEvent,
  *   window resize and orientation change

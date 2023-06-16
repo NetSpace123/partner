@@ -29,7 +29,6 @@
     <link href="/assets/css/variables.css" rel="stylesheet">
     <link href="/assets/css/main.css" rel="stylesheet">
 
-
 </head>
 
 <body>
@@ -45,8 +44,20 @@
         <div class="float-right">
             <nav id="navbar" class="navbar float-right">
                 <ul>
+                    @if(auth('partner')->user())
                     <div class="float-right">
-                        <form action="{{route('user-login')}}">
+                        <form action="{{route('partner-dashboard')}}">
+                            <button type="submit" class="mobile-nav-btn profile-btn">
+                                <img src="assets/img/testimonials/testimonials-5.jpg" width="40" height="40" class="rounded-circle">
+                                <span>
+                                   {{auth('partner')->user()->firstName}}</td>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                    @else
+                    <div class="float-right">
+                        <form action="{{route('partner-login')}}">
                             <button type="submit"
                                     class="btn btn-primary me-3  heder-btn-item btn-square mobile-nav-btn">
                                 Login
@@ -54,13 +65,14 @@
                         </form>
                     </div>
                     <div class="float-right">
-                        <form action="{{route('user-register')}}">
+                        <form action="{{route('partner-register')}}">
                             <button type="submit"
                                     class="btn btn-primary me-3  heder-btn-item btn-square mobile-nav-btn">
                                 Register
                             </button>
                         </form>
                     </div>
+                    @endif
                     <div class="float-right">
                         <form action="">
                             <button type="submit"
@@ -70,6 +82,7 @@
                             </button>
                         </form>
                     </div>
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
