@@ -11,11 +11,18 @@
                     @if(auth('partner')->user())
                         <div class="float-right">
                             <form action="{{route('partner-dashboard')}}">
+                                    <button type="submit" class="mobile-nav-btn profile-btn">
+                                        <span class="profile-box">
+                                             {{auth('partner')->user()->firstName}}
+                                        </span>
+                                    </button>
+                            </form>
+                        </div>
+                        <div class="float-right">
+                            <form action="{{route('partner-dashboard')}}">
                                 <button type="submit" class="mobile-nav-btn profile-btn">
-                                    <img src="assets/img/testimonials/testimonials-5.jpg" width="40" height="40" class="rounded-circle">
-                                    <span>
-                                   {{auth('partner')->user()->firstName}}</td>
-                                </span>
+                                    <img src="images/{{auth('partner')->user()->image}}" width="40" height="40"
+                                         class="rounded-circle">
                                 </button>
                             </form>
                         </div>
@@ -46,11 +53,14 @@
                             </button>
                         </form>
                     </div>
-
+                        <div class="float-right icon-box">
+                            <a href=""><i class="bi bi-bell" style="color: #5578ff;"></i></a>
+                        </div>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
         </div>
     </div>
+
 
 

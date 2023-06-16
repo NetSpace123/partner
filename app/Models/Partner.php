@@ -15,7 +15,8 @@ class Partner extends Authenticatable
         'lastName',
         'email',
         'phoneNumber',
-        'password'
+        'password',
+        'image'
     ];
 
 }

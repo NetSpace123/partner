@@ -24,8 +24,8 @@ class PartnersController extends Controller
     {
         //Check EMAIL Already use
         $validator = $request -> validate([
-            'email'=>'required|email|unique:partner',
-            'password'=>'required|min:6'
+            'email'=>'required|email|unique:partners',
+            'password'=>'required|min:6',
         ]);
         if ($validator){
             //create New Partner
@@ -35,12 +35,20 @@ class PartnersController extends Controller
             $new_user['email'] = $user_details['email'];
             $new_user['phoneNumber'] = $user_details['phoneNumber'];
             $new_user['password'] = Hash::make($user_details['password']);
+
+            //save img & path
+            $img_path = $request ->file('image') ;
+            $imgName = time().'.'.$img_path->extension();
+            $img_path->move(public_path('images'),$imgName);
+            $new_user['image'] = $imgName;
+
             $user = Partner::create($new_user);
 
             $credentials = $request->only('email', 'password');
             if (Auth("partner")->attempt($credentials)) {
                 // Authentication passed...
-                return redirect()->route('home')->with('success', 'You are logged in');
+                connectify('success', 'You are logged In !', 'Continue with your work 🔥');
+                return redirect()->route('home');
             }
             return redirect()->route('partner-register');
         }
@@ -53,9 +61,12 @@ class PartnersController extends Controller
             'password'=>'required'
         ]);
         if (auth('partner')->attempt($attributes)) {
-            dd("Done");
+            // Authentication passed...
+            connectify('success', 'You are logged In !', 'Continue with your work 🔥');
+            return redirect()->route('home');
         }
-        dd("no");
+        emotify('error', 'You are logged In !');
+        return back();
     }
 
 //    public function logout() {
