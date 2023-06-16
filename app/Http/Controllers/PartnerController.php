@@ -9,7 +9,7 @@ class PartnerController extends Controller
     public function dashboard()
     {
         if (empty(auth('partner')->user()->id)) {
-            return view("404/404");
+            return view("errors/errors");
         }
         return view("partner/partnerdashboard");
     }
