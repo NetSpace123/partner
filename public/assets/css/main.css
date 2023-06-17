@@ -216,6 +216,7 @@ section {
     transition: all 0.5s;
     z-index: 997;
     background-color: #fffafa;
+    margin-bottom: -15px;
 }
 
 .header.sticked {
@@ -3321,4 +3322,9 @@ section {
     font-size: 25px;
     text-align: left;
     margin-left: 10px;
+}
+
+.main-banner{
+    max-height: 250px;
+    width: 100%;
 }

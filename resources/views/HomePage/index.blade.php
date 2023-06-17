@@ -16,14 +16,14 @@
 
             <!-- The slideshow -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="assets/img/hero.jpg" alt="Los Angeles" width="100%" height="350px">
+                <div class="carousel-item active" >
+                    <img src="assets/img/hero.jpg" class="main-banner">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/hero.jpg" alt="Chicago" width="100%" height="350px">
+                    <img src="assets/img/hero.jpg" class="main-banner">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/hero.jpg" alt="New York" width="100%" height="350px">
+                    <img src="assets/img/hero.jpg" class="main-banner">
                 </div>
             </div>
 
