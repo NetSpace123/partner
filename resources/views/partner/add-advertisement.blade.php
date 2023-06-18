@@ -24,16 +24,19 @@
                 </div>
 
                 <div class="row mt-3">
-                    <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <select name="categories" id="categories" class="col-md-12 form-group mt-3 mt-md-0" style="color: #0dcaf0">
-                            @foreach($categories as $category)
-                                <option class="col-md-6 form-group mt-3 mt-md-0" value="{{$category->id}}">{{$category->category_name}}</option>
+                    <div class="col-md-6 form-group">
+                        <select name="district[]" id="district" class="select2-district-dropdown form-control" multiple="multiple">
+                            @foreach($districts as $district)
+                                <option class="form-group col-12"  value="{{$district->id}}">{{$district->districts_name}}</option>
                             @endforeach
                         </select>
-
                     </div>
                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <input type="email" class="form-control" name="contact-number" id="contact-number" placeholder="Contact Number" required>
+                        <select name="categories[]" id="categories" class="select2-category-dropdown form-control" multiple="multiple">
+                            @foreach($categories as $category)
+                                <option class="form-group col-12"  value="{{$category->id}}">{{$category->category_name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
@@ -76,7 +79,6 @@
     </section><!-- End Features Section -->
 
     <script src="assets/js/imageHandle.js"></script>
-
 
     @include('layouts.partners-footer')
 @endsection

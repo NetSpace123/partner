@@ -1,10 +1,3 @@
-/**
-* Template Name: HeroBiz
-* Updated: May 30 2023 with Bootstrap v5.3.0
-* Template URL: https://bootstrapmade.com/herobiz-bootstrap-business-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
@@ -295,4 +288,16 @@ document.addEventListener('DOMContentLoaded', () => {
     aos_init();
   });
 
+});
+
+//select 2 category js
+$(".select2-category-dropdown").select2({
+    placeholder: "Select Categories",
+    allowClear: true
+});
+
+//select 2 District js
+$(".select2-district-dropdown").select2({
+    placeholder: "Select District",
+    allowClear: true
 });

@@ -36,6 +36,7 @@
                             <input type="text" class="form-control rounded-left" name="lastName"
                                    placeholder="Second Name" required>
                         </div>
+
                         <div class="form-group">
                             <input type="email" class="form-control rounded-left" name="email" placeholder="email"
                                    required>
