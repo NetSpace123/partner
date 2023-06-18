@@ -10,8 +10,6 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
-    @notifyCss
-
     <!-- Favicons -->
     <link href="#" rel="icon">
     <link href="#" rel="apple-touch-icon">
@@ -40,8 +38,6 @@
 
 <body>
     @yield('content')
-    <x-notify::notify />
-    @notifyJs
 </body>
 
 <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i

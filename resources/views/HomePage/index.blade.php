@@ -47,7 +47,7 @@
         <section id="features" class="features">
             <div class="container" data-aos="fade-up">
 
-                <div class="row" data-aos="zoom-in" data-aos-delay="100">
+                <div class="row" data-aos="zoom-in"  data-aos-delay="100">
                     <div class="col-lg-3 col-md-4 mt-4 mt-md-0 tree-of-col">
                         <div class="icon-box">
                             <i class="bi bi-car-front" style="color: #5578ff;"></i>

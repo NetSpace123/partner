@@ -33,6 +33,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-primary);
+    color:#778f99;
 }
 
 /*--------------------------------------------------------------
@@ -3286,8 +3287,8 @@ section {
 }
 
 .btn-square {
-  padding-right: 15;
-  padding-left: 15;
+  padding-right: 15px;
+  padding-left: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3297,6 +3298,10 @@ section {
 
 .heder-btn-item:hover {
   margin-top: -5px;
+}
+
+.icon-box:hover {
+    margin-left: -5px;
 }
 
 .float-right{
@@ -3313,6 +3318,7 @@ section {
 
 .profile-btn{
     border: #0a53be;
+    background-color: #fffafa;
 }
 .profile-box{
     font-size: 13px;
@@ -3327,4 +3333,28 @@ section {
 .main-banner{
     max-height: 250px;
     width: 100%;
+}
+
+#multy-images{
+    width: 90%;
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+figure{
+    width: 45%;
+}
+img{
+    width: 100%;
+}
+figcaption{
+    text-align: center;
+    font-size: 2.4vmin;
+    margin-top: 0.5vmin;
+}
+.hide{
+    visibility: hidden;
 }

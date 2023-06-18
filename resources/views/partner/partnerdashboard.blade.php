@@ -6,8 +6,7 @@
 </head>
 <body>
 
-
-<x-notify::notify />
+<x-notify::notify/>
 @notifyJs
 </body>
 </html>

@@ -8,16 +8,16 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class PartnersController extends Controller
+class PartnersLoginNregisterController extends Controller
 {
     public function login()
     {
-        return view("partners/login");
+        return view("lognsAndRegisterPages/login");
     }
 
     public function register()
     {
-        return view("partners/register");
+        return view("lognsAndRegisterPages/register");
     }
 
     public function createuser(Request $request)
@@ -37,7 +37,7 @@ class PartnersController extends Controller
             $new_user['password'] = Hash::make($user_details['password']);
 
             //save img & path
-            $img_path = $request ->file('image') ;
+            $img_path = $request ->file('image');
             $imgName = time().'.'.$img_path->extension();
             $img_path->move(public_path('images'),$imgName);
             $new_user['image'] = $imgName;
