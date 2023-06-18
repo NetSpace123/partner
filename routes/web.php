@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//HomePage Routes
+Route::get('/',[\App\Http\Controllers\HomepageController::class,'index'])->name('home');
+
+
+//Partner Routes
+Route::get('/login',[\App\Http\Controllers\PartnersLoginNregisterController::class,'login'])->name('partner-login');
+Route::get('/register',[\App\Http\Controllers\PartnersLoginNregisterController::class,'register'])->name('partner-register');
+Route::post('/createuser',[\App\Http\Controllers\PartnersLoginNregisterController::class,'createuser'])->name('create-new-partner');
+Route::post('/checkpartner',[\App\Http\Controllers\PartnersLoginNregisterController::class,'checkpartner'])->name('checkpartner');
+Route::get('/dashboard',[\App\Http\Controllers\PartnerController::class,'dashboard'])->name('partner-dashboard');
+
+//Advertisement
+Route::get('/addadvertisement',[\App\Http\Controllers\AdvertisementController::class,'create'])->name('addadvertisement');
+Route::post('/storeadvertisement',[\App\Http\Controllers\AdvertisementController::class,'store'])->name('storeadvertisement');
