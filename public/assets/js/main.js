@@ -291,13 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //select 2 category js
-$(".select2-category-dropdown").select2({
-    placeholder: "Select Categories",
-    allowClear: true
-});
+$(".select2-category-dropdown").select2();
 
 //select 2 District js
-$(".select2-district-dropdown").select2({
-    placeholder: "Select District",
-    allowClear: true
-});
+$(".select2-district-dropdown").select2();

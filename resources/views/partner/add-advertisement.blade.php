@@ -25,14 +25,14 @@
 
                 <div class="row mt-3">
                     <div class="col-md-6 form-group">
-                        <select name="district[]" id="district" class="select2-district-dropdown form-control" multiple="multiple">
+                        <select name="district[]" id="district" class="select2-district-dropdown form-control">
                             @foreach($districts as $district)
                                 <option class="form-group col-12"  value="{{$district->id}}">{{$district->districts_name}}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-md-6 form-group mt-3 mt-md-0">
-                        <select name="categories[]" id="categories" class="select2-category-dropdown form-control" multiple="multiple">
+                        <select name="categories[]" id="categories" class="select2-category-dropdown form-control">
                             @foreach($categories as $category)
                                 <option class="form-group col-12"  value="{{$category->id}}">{{$category->category_name}}</option>
                             @endforeach
@@ -41,10 +41,7 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                </div>
-                <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                    <textarea class="form-control" name="description" rows="5" placeholder="Message" required></textarea>
                 </div>
 
                 <div class="form-group d-flex mt-3">
