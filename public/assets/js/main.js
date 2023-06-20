@@ -295,3 +295,51 @@ $(".select2-category-dropdown").select2();
 
 //select 2 District js
 $(".select2-district-dropdown").select2();
+
+//Calculate Commission Prices
+$("#addvertisement_price").on('change', function() {
+    var addvertisement_price = document.getElementById("addvertisement_price").valueAsNumber;
+    var commission_percentage = document.getElementById("commission_percentage").valueAsNumber;
+    CalculateCommission(addvertisement_price,commission_percentage);
+});
+
+$("#commission_percentage").on('change', function() {
+    var addvertisement_price = document.getElementById("addvertisement_price").valueAsNumber;
+    var commission_percentage = document.getElementById("commission_percentage").valueAsNumber;
+    CalculateCommission(addvertisement_price,commission_percentage);
+});
+
+function CalculateCommission(addvertisement_price, commission_percentage) {
+    if (isNaN(addvertisement_price)){
+        addvertisement_price = 0 ;
+    }
+    if (isNaN(commission_percentage)) {
+        commission_percentage = 0;
+    }
+
+    let amt_after_selling = ( addvertisement_price ) - addvertisement_price * commission_percentage / 100 ;
+    CurrancyFormatter(amt_after_selling , 'amt_after_selling');
+
+    let commission_amount_after_sale = addvertisement_price * commission_percentage / 100 ;
+    CurrancyFormatter(commission_amount_after_sale,'commission_amount_after_sale');
+
+}
+
+function CurrancyFormatter(total,type) {
+    var type = type;
+    var price = total;
+    const resultinr = (price).toLocaleString('en-IN', {
+        style: 'currency',
+        currency: 'LKR'
+    });
+
+    if (type == "amt_after_selling" ){
+        document.getElementById('amt_after_selling').value= resultinr;
+    }
+    else {
+        document.getElementById('commission_amount_after_sale').value= resultinr;
+    }
+
+}
+
+
