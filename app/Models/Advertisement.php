@@ -18,7 +18,19 @@ class Advertisement extends Model
         'category_id',
         'main_image',
         'sub_images',
-        'partner_id'
+        'partner_id',
+        'addvertisement_price',
+        'commission_percentage'
     ];
+
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 
 }

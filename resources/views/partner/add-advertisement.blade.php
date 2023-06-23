@@ -55,11 +55,11 @@
                     </div>
                     <div class="col-md-3 mt-3 form-group">
                         <label class="label">- Amount you get after selling</label>
-                        <input type="text" id="amt_after_selling" name="advertisement-name" class="form-control" id="advertisement-name" placeholder="" required readonly>
+                        <input type="text" id="amt_after_selling" name="amt_after_selling" class="form-control" id="advertisement-name" placeholder="" required readonly>
                     </div>
                     <div class="col-md-3 mt-3 form-group">
                         <label class="label">- Commission amount after selling</label>
-                        <input type="text" name="advertisement-name" class="form-control" id="commission_amount_after_sale" placeholder="" required readonly>
+                        <input type="text" name="commission_amount_after_sale" class="form-control" id="commission_amount_after_sale" placeholder="" required readonly>
                     </div>
                 </div>
 

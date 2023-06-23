@@ -19,7 +19,12 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        //
+        $advertisments = Advertisement::query()
+            //->where('partner_id',auth('partner')->user()->id)
+            ->where('partner_id',2)
+            ->get();
+
+        return view('partner/advertisements',compact('advertisments'));
     }
 
     /**
@@ -51,13 +56,15 @@ class AdvertisementController extends Controller
         if (empty(auth('partner')->user()->id)) {
             return view("errors/404");
         }
-        
+
         try {
             $advertisement['post_id'] = IdGenerator::generate(['table'=>'advertisements','field'=>'post_id','length'=>8,'prefix'=>'PID12']);
             $advertisement['partner_id'] = auth('partner')->user()->id;
             $advertisement['post_name'] = $request->input('advertisement-name');
             $advertisement['contact_num'] = $request->input('contact-number');
             $advertisement['description'] = $request->input('description');
+            $advertisement['addvertisement_price'] = $request->input('addvertisement_price');
+            $advertisement['commission_percentage'] = $request->input('commission_percentage');
             $post_catagories = $request->input('categories');
             foreach ($post_catagories as $post_catagory){
                 $advertisement['category_id'] = $post_catagory;
@@ -109,7 +116,19 @@ class AdvertisementController extends Controller
      */
     public function show($id)
     {
-        //
+        if (empty(auth('partner')->user()->id)) {
+            return view("errors/404");
+        }
+        $singleAdd = Advertisement::query()
+            ->where('post_id',$id)
+            ->with('district')
+            ->with('category')
+            ->get();
+
+        $main_image = $singleAdd[0]->main_image;
+        $sub_images = explode("|", $singleAdd[0]->sub_images);
+
+        return view('partner/singlead',compact('singleAdd','sub_images','main_image'));
     }
 
     /**
@@ -143,6 +162,12 @@ class AdvertisementController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $advertisement = Advertisement::where('post_id',$id)->delete();
+            return redirect()->route('viewadvertisement');
+        }
+        catch (Exception $exception){
+            dd($exception);
+        }
     }
 }

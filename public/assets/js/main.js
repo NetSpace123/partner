@@ -339,7 +339,6 @@ function CurrancyFormatter(total,type) {
     else {
         document.getElementById('commission_amount_after_sale').value= resultinr;
     }
-
 }
 
 

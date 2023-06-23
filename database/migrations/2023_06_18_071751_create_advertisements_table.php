@@ -26,6 +26,8 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('main_image');
             $table->string('sub_images');
+            $table->integer('addvertisement_price');
+            $table->integer('commission_percentage');
             $table->timestamps();
         });
     }
