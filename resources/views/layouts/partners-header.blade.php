@@ -44,7 +44,7 @@
                         </div>
                     @endif
                     <div class="float-right">
-                        <form action="">
+                        <form action="{{route('addadvertisement')}}">
                             <button type="submit"
                                     class="btn btn-warning me-3  heder-btn-item btn-square mobile-nav-btn">
                                 Post your Ad
@@ -52,16 +52,45 @@
                             </button>
                         </form>
                     </div>
-                        <div class="float-right icon-box">
-                            <a href=""><i class="bi bi-bell" style="color: #5578ff;"></i></a>
-                        </div>
+                        <ul class="navbar-nav d-flex flex-row me-1">
+                                <li class="nav-item me-3 me-lg-0">
+                                    <div class="dropdown">
+                                        <a class="" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                            <i class="fa fa-bell fa-xl"></i>
+                                            @if(auth('partner')->user() && auth('partner')->user()->unreadNotifications()->count() > 0)
+                                                    <span class="badge rounded-pill badge-notification bg-danger">
+                                                      {{auth('partner')->user()->unreadNotifications()->count()}}
+                                                   </span>
+                                            @endif
+                                        </a>
+
+                                        @if(auth('partner')->user() && auth('partner')->user()->unreadNotifications()->count() > 0)
+                                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                                            @foreach(auth('partner')->user()->unreadNotifications as $notification)
+                                            <li>
+                                                <a class="dropdown-item" href="{{route('partner.notifications.single.read',$notification->id)}}">
+                                                    <span class="font-weight-bold">
+                                                        Congratulations !!! on your {{$notification->data['name']}} advertisement.
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            @endforeach
+                                                <li>
+                                                    <a class="dropdown-item text-center small color-gray" href="{{route('partner.notifications.read')}}">
+                                                        <span class="mark-as-readed">
+                                                            Mark All as Readed
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                        </ul>
+                                        @endif
+                                    </div>
+                                </li>
+                            </ul>
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
         </div>
     </div>
-
-
-
-
 </header>

@@ -27,6 +27,8 @@ Route::get('/register',[\App\Http\Controllers\PartnersLoginNregisterController::
 Route::post('/createuser',[\App\Http\Controllers\PartnersLoginNregisterController::class,'createuser'])->name('create-new-partner');
 Route::post('/checkpartner',[\App\Http\Controllers\PartnersLoginNregisterController::class,'checkpartner'])->name('checkpartner');
 Route::get('/dashboard',[\App\Http\Controllers\PartnerController::class,'dashboard'])->name('partner-dashboard');
+Route::get('partner/notifications/read', [\App\Http\Controllers\NotificationController::class,'read'])->name('partner.notifications.read');
+Route::get('partner/notifications/read-single/{id}', [\App\Http\Controllers\NotificationController::class,'SingleRead'])->name('partner.notifications.single.read');
 
 //Advertisement
 Route::get('/addadvertisement',[\App\Http\Controllers\AdvertisementController::class,'create'])->name('addadvertisement');

@@ -6,8 +6,10 @@ use App\Models\Advertisement;
 use App\Models\AdvertisementSubImage;
 use App\Models\Category;
 use App\Models\District;
+use App\Notifications\AdvertisementAddingNotification;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 use Mockery\Exception;
 
 class AdvertisementController extends Controller
@@ -20,8 +22,7 @@ class AdvertisementController extends Controller
     public function index()
     {
         $advertisments = Advertisement::query()
-            //->where('partner_id',auth('partner')->user()->id)
-            ->where('partner_id',2)
+            ->where('partner_id',auth('partner')->user()->id)
             ->get();
 
         return view('partner/advertisements',compact('advertisments'));
@@ -35,7 +36,7 @@ class AdvertisementController extends Controller
     public function create()
     {
         if (empty(auth('partner')->user()->id)) {
-            return view("errors/404");
+            return view("lognsAndRegisterPages/login");
         }
         $categories = Category::query()
             ->get();
@@ -96,7 +97,9 @@ class AdvertisementController extends Controller
             $newAdvertisment = Advertisement::create($advertisement);
 
             if ($newAdvertisment){
-                dd("Done");
+                $user = auth('partner')->user();
+                Notification::send($user, new AdvertisementAddingNotification($newAdvertisment));
+                return redirect(route('viewadvertisement'));
             }
             else{
                 dd("error");

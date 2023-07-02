@@ -354,8 +354,8 @@ section {
   .navbar .dropdown .active,
   .navbar .dropdown .active:focus,
   .navbar .dropdown:hover>a {
-    color: var(--color-white);
-    background: var(--color-secondary);
+    color: black;
+    background: none;
   }
 
   .navbar .dropdown ul {
@@ -368,7 +368,7 @@ section {
     z-index: 99;
     opacity: 0;
     visibility: hidden;
-    background: var(--color-secondary);
+    background: white;
     transition: 0.3s;
   }
 
@@ -381,7 +381,7 @@ section {
     font-size: 15px;
     text-transform: none;
     font-weight: 400;
-    color: rgba(var(--color-white-rgb), 0.5);
+    color: black;
   }
 
   .navbar .dropdown ul a i {
@@ -3367,3 +3367,7 @@ figcaption{
     font-family: var(--font-primary);
     color:#778f99;
 }
+.mark-as-readed{
+    font-size: 12px;
+}
+
