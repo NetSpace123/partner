@@ -1,20 +1,26 @@
-@extends('layouts.master-layout')
-
-@section('title', 'Advertisements')
+@extends('layouts.dashboard-layouts.navbar-n-sidebars')
 
 @section('content')
-    @include('layouts.partners-header')
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Your Advertisements</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Your Advertisements</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
     <div class="container">
-        <br>
-        <br>
-        <div class="container align-content-center center" data-aos="fade-up">
-            <center>
-                <h1>Your Advertisements</h1>
-            </center>
-        </div>
-        <br>
         <div class="row" id="ads">
-        @foreach($advertisments as $advertisment)
+            @foreach($advertisments as $advertisment)
                 <div class="col-md-4 mb-5">
                     <div class="card rounded">
                         <div class="card-image">
@@ -23,7 +29,7 @@
                         </div>
                         <div class="card-image-overlay m-auto mt-1">
                             <span class="card-detail-badge advertisement_price" >Rs: {{$advertisment->addvertisement_price}}.00/=</span>
-{{--                            <span class="card-detail-badge">13000 Kms</span>--}}
+                            {{--                            <span class="card-detail-badge">13000 Kms</span>--}}
                         </div>
                         <div class="card-body text-center">
                             <div class="ad-title m-auto">
@@ -33,7 +39,7 @@
                         </div>
                     </div>
                 </div>
-        @endforeach
+            @endforeach
         </div>
 
     </div>
@@ -146,7 +152,6 @@
     </style>
     <script src="assets/js/Advertisement.js"></script>
 
-    @include('layouts.partners-footer')
-@endsection
 
+@endsection
 

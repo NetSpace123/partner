@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Advertisement;
 use Illuminate\Http\Request;
 
 class PartnerController extends Controller
@@ -11,7 +12,10 @@ class PartnerController extends Controller
         if (empty(auth('partner')->user()->id)) {
             return view("errors/404");
         }
-        connectify('success', 'You are logged In !', 'Continue with your work 🔥');
-        return view("partner/partnerdashboard");
+        $total_ads = Advertisement::query()
+            ->where('partner_id',auth('partner')->user()->id)
+            ->count();
+
+        return view("partner/partnerdashboard",compact('total_ads'));
     }
 }

@@ -1,10 +1,22 @@
-@extends('layouts.master-layout')
-
-@section('title', 'Single Advertisement Page')
+@extends('layouts.dashboard-layouts.navbar-n-sidebars')
 
 @section('content')
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">{{$singleAdd[0]->post_name}} Advertisement</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">{{$singleAdd[0]->post_name}} Advertisement</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
 
-    @include('layouts.partners-header')
 
     <div class="container">
         <div class="card mb-5">
@@ -28,21 +40,21 @@
                         <h3 class="product-title heading"><strong>{{$singleAdd[0]->post_name}} </strong><h3>
                                 <div class="row">
                                     <div class="col-md-4">
-                                        <h6><i class="bi bi-pin-map" style="color: #ff9f1a;"> </i>{{$singleAdd[0]->district->districts_name}}</h6>
+                                        <h6><i class="fa fa-map-marker"> </i> &nbsp;&nbsp; {{$singleAdd[0]->district->districts_name}}</h6>
                                     </div>
                                     <div class="col-md-6">
-                                        <h6><i class="bi bi-bell" style="color: #ff9f1a;"> </i>{{$singleAdd[0]->category->category_name}}</h6>
+                                        <h6><i class="far fa-copy"> </i> &nbsp;&nbsp; {{$singleAdd[0]->category->category_name}}</h6>
                                     </div>
                                 </div>
                                 <h5 class="price">Price: Rs : <span>{{$singleAdd[0]->addvertisement_price}}.00 /=</span></h5>
                                 <h5 class="price">Commission Percentage: <span>{{$singleAdd[0]->commission_percentage}} %</span></h5>
-                        <p class="product-description">Description : {{$singleAdd[0]->description}} </p>
-                        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+                                <p class="product-description">Description : {{$singleAdd[0]->description}} </p>
+                                <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
 
-                        <div class="action">
-                            <button class="btn btn-warning" type="button">EDIT ADVERTISEMENT</button>
-                            <a class="btn btn-danger confirm-delete"  href="{{ route('advertisement.delete',$singleAdd[0]->post_id) }}">DELETE ADVERTISEMENT</a>
-                        </div>
+                                <div class="action">
+                                    <button class="btn btn-warning" type="button">EDIT ADVERTISEMENT</button>
+                                    <a class="btn btn-danger confirm-delete"  href="{{ route('advertisement.delete',$singleAdd[0]->post_id) }}">DELETE ADVERTISEMENT</a>
+                                </div>
                     </div>
                 </div>
             </div>
@@ -103,7 +115,6 @@
             animation-duration: .3s; }
 
         .card {
-            margin-top: 50px;
             background: #eee;
             padding: 3em;
             line-height: 1.5em; }
@@ -194,7 +205,7 @@
             padding: 1.3em; }
 
         .heading{
-            color: black;
+            color: #ff9f1a;
         }
 
         @-webkit-keyframes opacity {
@@ -218,9 +229,7 @@
                 transform: scale(1); } }
 
     </style>
-
     <script src="../assets/js/Advertisement.js"></script>
 
-    @include('layouts.partners-footer')
-
 @endsection
+

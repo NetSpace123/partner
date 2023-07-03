@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\District;
 use App\Notifications\AdvertisementAddingNotification;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Mockery\Exception;
@@ -44,6 +45,20 @@ class AdvertisementController extends Controller
             ->get();
 
         return view('partner/add-advertisement',compact('categories','districts'));
+    }
+
+    public function test()
+    {
+        $singleAdd = Advertisement::query()
+            ->where('post_id','PID12005')
+            ->with('district')
+            ->with('category')
+            ->get();
+
+        $main_image = $singleAdd[0]->main_image;
+        $sub_images = explode("|", $singleAdd[0]->sub_images);
+
+        return view('partner/testadd',compact('singleAdd','sub_images','main_image'));
     }
 
     /**
@@ -167,7 +182,7 @@ class AdvertisementController extends Controller
     {
         try {
             $advertisement = Advertisement::where('post_id',$id)->delete();
-            return redirect()->route('viewadvertisement');
+            return redirect()->route('viewadvertisement')->with('status','successfully update your job');
         }
         catch (Exception $exception){
             dd($exception);
