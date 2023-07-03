@@ -38,5 +38,10 @@ Route::get('deletead/{id}', [App\Http\Controllers\AdvertisementController::class
 
 Route::get('/test-addadvertisement',[\App\Http\Controllers\AdvertisementController::class,'test']);
 
+//Broker
+Route::get('/ads',[\App\Http\Controllers\broker\BrokerDashboardController::class,'index'])->name('ads');
+Route::get('/singlead/{id}',[\App\Http\Controllers\broker\BrokerDashboardController::class,'show'])->name('partner.singlead');
+Route::get('/referral/{id}',[\App\Http\Controllers\broker\BrokerDashboardController::class,'generateReferral'])->name('get.referral.code');
+
 
 

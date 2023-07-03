@@ -20,4 +20,9 @@ class Partner extends Authenticatable
         'image'
     ];
 
+    public function referral()
+    {
+        return $this->hasMany(ReferralCode::class);
+    }
+
 }

@@ -25,7 +25,7 @@
                     <div class="card rounded">
                         <div class="card-image">
                             <span class="card-notify-badge">Commission {{$advertisment->commission_percentage}} %</span>
-                            <img class="img-fluid" src="images/{{$advertisment->main_image}}" alt="Image"/>
+                            <img class="img-fluid product-img" src="images/{{$advertisment->main_image}}" alt="Image"/>
                         </div>
                         <div class="card-image-overlay m-auto mt-1">
                             <span class="card-detail-badge advertisement_price" >Rs: {{$advertisment->addvertisement_price}}.00/=</span>
@@ -148,6 +148,12 @@
         #ads .ad-title h5 {
             text-transform: uppercase;
             font-size: 18px;
+        }
+
+        .product-img{
+            width: 350px;
+            height: 260px;
+            object-fit: contain;
         }
     </style>
     <script src="assets/js/Advertisement.js"></script>

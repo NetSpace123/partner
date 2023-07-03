@@ -22,6 +22,10 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
+        if (empty(auth('partner')->user()->id)) {
+            return view("lognsAndRegisterPages/login");
+        }
+
         $advertisments = Advertisement::query()
             ->where('partner_id',auth('partner')->user()->id)
             ->get();

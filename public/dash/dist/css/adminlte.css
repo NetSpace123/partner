@@ -1763,12 +1763,12 @@ pre code {
 }
 
 .table-hover .table-secondary:hover {
-  background-color: #c8cbcf;
+  background-color: #ffffff;
 }
 
 .table-hover .table-secondary:hover > td,
 .table-hover .table-secondary:hover > th {
-  background-color: #c8cbcf;
+  background-color: #ffffff;
 }
 
 .table-success,
@@ -2050,7 +2050,7 @@ pre code {
 }
 
 .form-control::-webkit-input-placeholder {
-  color: #939ba2;
+  color: #ffffff;
   opacity: 1;
 }
 
@@ -3852,7 +3852,7 @@ input[type="button"].btn-block {
 }
 
 .custom-control-input:not(:disabled):active ~ .custom-control-label::before {
-  color: #fff;
+  color: #b83e6d;
   background-color: #b3d7ff;
   border-color: #b3d7ff;
   box-shadow: none;
