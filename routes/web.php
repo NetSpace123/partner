@@ -42,6 +42,11 @@ Route::get('/test-addadvertisement',[\App\Http\Controllers\AdvertisementControll
 Route::get('/ads',[\App\Http\Controllers\broker\BrokerDashboardController::class,'index'])->name('ads');
 Route::get('/singlead/{id}',[\App\Http\Controllers\broker\BrokerDashboardController::class,'show'])->name('partner.singlead');
 Route::get('/referral/{id}',[\App\Http\Controllers\broker\BrokerDashboardController::class,'generateReferral'])->name('get.referral.code');
+Route::get('/referralcodes',[\App\Http\Controllers\broker\BrokerDashboardController::class,'referralCodes'])->name('referralcodes');
+
+//Customer
+Route::get('/rc/{id}',[\App\Http\Controllers\customer\CustomerController::class,'getRefCustomer'])->name('customer.rc');
+
 
 
 

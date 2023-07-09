@@ -33,9 +33,9 @@ class Advertisement extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function referral()
+    public function referral_code()
     {
-        return $this->belongsTo(ReferralCode::class);
+        return $this->hasMany(ReferralCode::class);
     }
 
 }

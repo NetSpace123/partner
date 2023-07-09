@@ -77,6 +77,32 @@
         </div>
     </div>
 
+    <div class="modal fade" id="fail" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="border-left-width:3px;border-left-color: yellow">
+            <div class="modal-content" style="border-left-width:3px;border-left-color: yellow">
+                <div class="modal-header">
+                    <span class="modal-title">
+                        <i class="fa fa-warning" style="color: yellow"></i>
+                        &nbsp;&nbsp; Sorry you already got this. Please check your Referral table.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="done" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="border-left-width:3px;border-left-color: green">
+            <div class="modal-content" style="border-left-width:3px;border-left-color: green">
+                <div class="modal-header">
+                    <span class="modal-title">
+                        <i class="fa fa-check" style="color:green"></i>
+                        &nbsp;&nbsp; Copied !
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <style>
 
         body {
@@ -248,34 +274,27 @@
     <script src="../assets/js/Advertisement.js"></script>
 
     <script type="text/javascript">
-
         $(document).ready(function () {
-            /* When click show user */
             $('body').on('click', '.referral-btn', function () {
                 var userURL = $(this).data('url');
                 $.get(userURL, function (data) {
-                    $('#ReferralShowModal').modal('show');
-                    $('#referral-code').text(data);
+                    if(data == "fail"){
+                        $('#fail').modal('show');
+                    }else{
+                        $('#ReferralShowModal').modal('show');
+                        $('#referral-code').text(data);
+                    }
                 })
             });
         });
 
         $(document).on('click', '#txt-copy', function () {
-            // Get the text field
-            var dummyContent = $('#referral-code').text();
-            // Add it to the document
-
-                var copyTextarea = dummyContent;
-                copyTextarea.select();
-                try {
-                    var successful = document.execCommand('copy');
-                    var msg = successful ? 'successful' : 'unsuccessful';
-                    console.log('Copying text command was ' + msg);
-                } catch (err) {
-                    console.log('Oops, unable to copy');
-                }
-                return false;
-
+            // Get the referral code to Clipboard
+            let text = $('#referral-code').text();
+            navigator.clipboard.writeText(text);
+            console.log('Content copied to clipboard');
+            $('#ReferralShowModal').modal('hide');
+            $('#done').modal('show');
         });
 
     </script>

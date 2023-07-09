@@ -1,6 +1,22 @@
 @extends('layouts.dashboard-layouts.navbar-n-sidebars')
 
 @section('content')
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">All Advertisements</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Your Advertisements</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
     <div class="filters">
         <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#mobile-filter"
                 aria-expanded="true" aria-controls="mobile-filter">Filter<span class="px-1 fas fa-filter"></span>
@@ -8,73 +24,31 @@
     </div>
     <div id="mobile-filter">
         <div class="py-3">
-            <h5 class="font-weight-bold">Brands</h5>
-            <form class="brand">
-                <div class="form-inline d-flex align-items-center py-1"><label class="tick">Royal Fields <input
-                            type="checkbox"> <span class="check"></span> </label></div>
-                <div class="form-inline d-flex align-items-center py-1"><label class="tick">Crasmas Fields <input
-                            type="checkbox" checked> <span class="check"></span> </label></div>
-                <div class="form-inline d-flex align-items-center py-1"><label class="tick">Vegetarisma Farm <input
-                            type="checkbox" checked> <span class="check"></span> </label></div>
-                <div class="form-inline d-flex align-items-center py-1"><label class="tick">Farmar Field Eve <input
-                            type="checkbox"> <span class="check"></span> </label></div>
-                <div class="form-inline d-flex align-items-center py-1"><label class="tick">True Farmar Steve <input
-                            type="checkbox"> <span class="check"></span> </label></div>
-            </form>
+            <h5 class="font-weight-bold">Categories</h5>
+            @foreach($categories as $category)
+                <div class="category form-inline d-flex align-items-center py-1"><label for="cat{{$category->id}}" class='cat-check tick'>
+                        <input type="checkbox" name="cat[]" value="{{$category->id}}" id="cat{{$category->id}}" checked>
+                        {{$category->category_name}}<span class="check"></span> </label>
+                </div>
+            @endforeach
         </div>
     </div>
     <div class="content py-md-0 py-3">
         <section id="sidebar">
             <div class="py-3">
-                <h5 class="font-weight-bold">Brands</h5>
-                <form class="brand">
-                    <div class="form-inline d-flex align-items-center py-1"><label class="tick">Royal Fields <input
-                                type="checkbox"> <span class="check"></span> </label></div>
-                    <div class="form-inline d-flex align-items-center py-1"><label class="tick">Crasmas Fields <input
-                                type="checkbox" checked> <span class="check"></span> </label></div>
-                    <div class="form-inline d-flex align-items-center py-1"><label class="tick">Vegetarisma Farm <input
-                                type="checkbox" checked> <span class="check"></span> </label></div>
-                    <div class="form-inline d-flex align-items-center py-1"><label class="tick">Farmar Field Eve <input
-                                type="checkbox"> <span class="check"></span> </label></div>
-                    <div class="form-inline d-flex align-items-center py-1"><label class="tick">True Farmar Steve <input
-                                type="checkbox"> <span class="check"></span> </label></div>
-                </form>
+                <h5 class="font-weight-bold">Categories</h5>
+                @foreach($categories as $category)
+                    <div class="category form-inline d-flex align-items-center py-1"><label for="cat{{$category->id}}" class='cat-check tick'>
+                            <input type="checkbox" name="cat[]" value="{{$category->id}}" id="cat{{$category->id}}" checked>
+                        {{$category->category_name}}<span class="check"></span> </label>
+                    </div>
+                @endforeach
             </div>
         </section> <!-- Products Section -->
         <section id="products">
-                <div class="row">
-                    @foreach($advertisments as $advertisment)
-                        <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mb-3">
-                            <div class="card"><img class="card-img-top product-img"
-                                                   src="images/{{$advertisment->main_image}}">
-                                <div class="card-body">
-                                    <h6 class="font-weight-bold pt-1">{{$advertisment->post_name}}</h6>
-                                    <div class="d-flex align-items-center justify-content-between pt-3">
-                                        <div class="d-flex flex-column">
-                                            <div class="h6 font-weight-bold">Rs: {{$advertisment->addvertisement_price}}
-                                                .00/
-                                            </div>
-                                            <div class="text-muted rebate">
-                                                Commission {{$advertisment->commission_percentage}} %
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a class="ad-btn" href="{{ route('partner.singlead',$advertisment->post_id) }}">
-                                        <div class="btn btn-primary mt-3 mb-2">
-                                            Promote now
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    @endforeach
-
-                </div>
-            </div>
+            @include('broker.productsList')
         </section>
     </div>
-
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
@@ -460,6 +434,33 @@
             }
         }
     </style>
+
+    <script>
+        $(document).ready(function () {
+            var categories = [];
+            $('input[name="cat[]"]').on('change', function (e) {
+
+                e.preventDefault();
+                categories = []; // reset
+
+                $('input[name="cat[]"]:checked').each(function () {
+                    categories.push($(this).val());
+                });
+
+                $.ajax({
+                    type: "GET",
+                    data: {
+                        'categories': categories,
+                    },
+                    url: "{{ route('ads') }}",
+
+                    success: function (data) {
+                        $('.search-result').html(data);
+                    }
+                })
+            });
+        });
+    </script>
 
 @endsection
 

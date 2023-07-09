@@ -12,9 +12,21 @@ use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Notification;
 use Mockery\Exception;
+use App\Utils\PublicFunctions;
 
 class AdvertisementController extends Controller
 {
+    /**
+     * All Utils instance.
+     *
+     */
+    protected $PublicFunctions;
+
+    public function __construct(PublicFunctions $PublicFunctions)
+    {
+        $this->PublicFunctions = $PublicFunctions;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +34,9 @@ class AdvertisementController extends Controller
      */
     public function index()
     {
-        if (empty(auth('partner')->user()->id)) {
+        //Check user logged or not
+        $notLogged = $this->PublicFunctions->CheckUser();
+        if ($notLogged){
             return view("lognsAndRegisterPages/login");
         }
 
@@ -40,9 +54,12 @@ class AdvertisementController extends Controller
      */
     public function create()
     {
-        if (empty(auth('partner')->user()->id)) {
+        //Check user logged or not
+        $notLogged = $this->PublicFunctions->CheckUser();
+        if ($notLogged){
             return view("lognsAndRegisterPages/login");
         }
+
         $categories = Category::query()
             ->get();
         $districts = District::query()
@@ -73,8 +90,10 @@ class AdvertisementController extends Controller
      */
     public function store(Request $request)
     {
-        if (empty(auth('partner')->user()->id)) {
-            return view("errors/404");
+        //Check user logged or not
+        $notLogged = $this->PublicFunctions->CheckUser();
+        if ($notLogged){
+            return view("lognsAndRegisterPages/login");
         }
 
         try {
@@ -138,9 +157,12 @@ class AdvertisementController extends Controller
      */
     public function show($id)
     {
-        if (empty(auth('partner')->user()->id)) {
-            return view("errors/404");
+        //Check user logged or not
+        $notLogged = $this->PublicFunctions->CheckUser();
+        if ($notLogged){
+            return view("lognsAndRegisterPages/login");
         }
+
         $singleAdd = Advertisement::query()
             ->where('post_id',$id)
             ->with('district')

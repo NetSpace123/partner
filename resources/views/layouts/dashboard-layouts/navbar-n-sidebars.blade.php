@@ -27,6 +27,9 @@
     {{--    select 2 dropdown--}}
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css" rel="stylesheet" />
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -176,6 +179,24 @@
                                 <a href="{{route('ads')}}" class="nav-link">
                                     <i class="far fa-eye nav-icon"></i>
                                     <p>View all Advertisements</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-star"></i>
+                            <p>
+                                My Referral
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{route('referralcodes')}}" class="nav-link">
+                                    <i class="far fa-eye nav-icon"></i>
+                                    <p>View all</p>
                                 </a>
                             </li>
                         </ul>
