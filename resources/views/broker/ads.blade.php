@@ -22,17 +22,17 @@
                 aria-expanded="true" aria-controls="mobile-filter">Filter<span class="px-1 fas fa-filter"></span>
         </button>
     </div>
-    <div id="mobile-filter">
-        <div class="py-3">
-            <h5 class="font-weight-bold">Categories</h5>
-            @foreach($categories as $category)
-                <div class="category form-inline d-flex align-items-center py-1"><label for="cat{{$category->id}}" class='cat-check tick'>
-                        <input type="checkbox" name="cat[]" value="{{$category->id}}" id="cat{{$category->id}}" checked>
-                        {{$category->category_name}}<span class="check"></span> </label>
-                </div>
-            @endforeach
-        </div>
-    </div>
+{{--    <div id="mobile-filter">--}}
+{{--        <div class="py-3">--}}
+{{--            <h5 class="font-weight-bold">Categories</h5>--}}
+{{--            @foreach($categories as $category)--}}
+{{--                <div class="category form-inline d-flex align-items-center py-1"><label for="cat{{$category->id}}" class='cat-check tick'>--}}
+{{--                        <input type="checkbox" name="cat[]" value="{{$category->id}}" id="cat{{$category->id}}" checked>--}}
+{{--                        {{$category->category_name}}<span class="check"></span> </label>--}}
+{{--                </div>--}}
+{{--            @endforeach--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="content py-md-0 py-3">
         <section id="sidebar">
             <div class="py-3">

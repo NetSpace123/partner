@@ -16,8 +16,16 @@ class CustomerController extends Controller
             ->exists();
 
         if ($check_ref == true){
-            dd($check_ref);
+
+            $product = ReferralCode::query()
+                ->join('advertisements', 'advertisements.post_id', '=', 'referral_codes.post_id')
+                ->where('referral_codes.referral_code','=',$id)
+                ->get();
+
+            $sub_images = explode("|", $product[0]->sub_images );
+
+            return view('customers.dashboard',compact('product','sub_images'));
         }
-        dd("Invalid");
+        dd("Invalid referral Code");
     }
 }

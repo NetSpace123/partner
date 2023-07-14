@@ -46,9 +46,10 @@ class BrokerDashboardController extends Controller
             $selected_categories = $request->categories;
             $categories = Category::query()
                 ->get();
+
             $advertisments = Advertisement::query()
                  ->whereNot('partner_id',auth('partner')->user()->id)
-                 ->where('category_id',$selected_categories)
+                 ->whereIn('category_id',$selected_categories)
                  ->get();
 
             return view('broker/productsList',compact('advertisments','categories'))->render();
